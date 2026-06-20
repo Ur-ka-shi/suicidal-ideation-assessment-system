@@ -452,17 +452,20 @@ div[data-testid="stHorizontalBlock"]:has(div.nav-wrapper) > div[data-testid="col
 # ══════════════════════════════════════════════════════════════════════════════
 # LOAD DATA & MODEL ARCHIVE
 # ══════════════════════════════════════════════════════════════════════════════
-df = pd.read_csv("dataset.csv") if pd.io.common.file_exists("dataset.csv") else pd.DataFrame()
-# LOAD MODEL
+import pickle
 
 try:
     with open("model.pkl", "rb") as f:
         model = pickle.load(f)
 
-    st.sidebar.success("✅ Model Loaded")
+    print("MODEL LOADED SUCCESSFULLY")
+    print(type(model))
 
 except Exception as e:
-    st.sidebar.error(f"❌ {e}")
+
+    print("MODEL LOAD ERROR")
+    print(e)
+
     model = None
 # ══════════════════════════════════════════════════════════════════════════════
 
